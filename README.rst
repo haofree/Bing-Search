@@ -1,18 +1,19 @@
-bing-search: Use Bing from the command line
-===========================================
+Bing-Search -- Use Bing from the command line
+=============================================
 
-**Bing-search** allows you to use Bring from the comfort of your shell.
+**Bing-search** allows you to use Bing from the comfort of your shell.
+::
+  usage: search [-h] [-i] [-s] [-r] [-n] [-v]
 
-usage: bing-search [-h] [-i] [-s] [-r] [-n] <Search Terms>
+  Run searches using Bing
 
-Run searches using Bing
-
-optional arguments:
-  -h, --help  show this help message and exit
-  -i          search images
-  -s          search spelling
-  -r          search related
-  -n          search news
+  optional arguments:
+    -h, --help  show this help message and exit
+    -i          search images
+    -s          search spelling
+    -r          search related
+    -n          search news
+    -v          be verbose
 
 Examples
 --------
@@ -103,6 +104,6 @@ Related Search: ::
 
 Dependencies
 ------------
-  This couldn't have been done without `pybing`_
+This couldn't have been done without `pybing`_
 
 .. _`pybing`: http://code.google.com/p/pybing
