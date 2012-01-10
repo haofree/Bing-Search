@@ -1,0 +1,10 @@
+usage: bing-search [-h] [-i] [-s] [-r] [-n] <Search Terms>
+
+Run searches using Bing
+
+optional arguments:
+  -h, --help  show this help message and exit
+  -i          search images
+  -s          search spelling
+  -r          search related
+  -n          search news
