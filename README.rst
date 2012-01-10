@@ -3,7 +3,7 @@ Bing-Search -- Use Bing from the command line
 
 **Bing-search** allows you to use Bing from the comfort of your shell.
 ::
-  usage: search [-h] [-i] [-s] [-r] [-n] [-v]
+  usage: bing-search [-h] [-i] [-s] [-r] [-n] [-v]
 
   Run searches using Bing
 
