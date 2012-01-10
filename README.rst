@@ -19,7 +19,7 @@ Examples
 --------
 *Some of the results in the examples were omitted for brevity*
 
-Regular Search: ::
+**Regular Search:** ::
 
   $ bing-search reddit
   reddit: the front page of the internet
@@ -34,7 +34,7 @@ Regular Search: ::
   reddit: the front page of the internet ... use the following search parameters to narrow your results: reddit:{name}
   http://www.reddit.com/r/funny/
 
-Image Search: ::
+**Image Search:** ::
   
   $ bing-search -i lolcat
   Lolcat 1905 Demotivational Poster Demotivational Posters Daily ...
@@ -57,7 +57,7 @@ Image Search: ::
   Size: 83255
   Dimensions: 500x658
 
-News Search: ::
+**News Search:** ::
 
   $ bing-search -n hacker news
   Investors in Murdoch's News Corp forgive hacking
@@ -75,7 +75,7 @@ News Search: ::
   Cameron will attend hacking inquiry if asked: Downing St
   http://www.asiaone.com/News/Latest%2BNews/World/Story/A1Story20120110-320862.html
 
-Related Search: ::
+**Related Search:** ::
   
   $ bing-search -r Rick Astley
   Rick Astley Death
