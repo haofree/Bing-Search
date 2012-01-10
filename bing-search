@@ -1,0 +1,80 @@
+#!/usr/bin/env python
+import sys, cgi, os
+from argparse import ArgumentParser
+from pybing import Bing
+
+'''
+  TODO: 
+    Add support for a ML ( possibly json )
+    Add color (clint)
+'''
+
+def main():
+  global api_key
+  parser = ArgumentParser(description='Run searches using Bing' )
+  parser.add_argument('-i', action='store_true', dest='search_images', help='search images')
+  parser.add_argument('-s', action='store_true', dest='search_spelling', help='search spelling')
+  parser.add_argument('-r', action='store_true', dest='search_related', help='search related')
+  parser.add_argument('-n', action='store_true', dest='search_news', help='search news')
+  parser.add_argument('-v', action='store_true', dest='verbose', help='be verbose')
+  args, query_arr = parser.parse_known_args(sys.argv)
+
+  query_arr.remove(sys.argv[0]) # remove name from query array
+  query = ""
+  for x in query_arr:
+    query += x+' '
+
+  bing = Bing(api_key)
+
+  if query == "": # If there are no search terms
+    #parser.print_help()
+    exit()        # ...exit
+
+  if(args.search_spelling):
+    try:
+      for x in bing.search_spell(query)['SearchResponse']['Spell']['Results']:
+        print(x['Value'])
+        print
+    except KeyError as strerror:
+      if(args.verbose): print strerror.message 
+  elif(args.search_images):
+    try:
+      for x in bing.search_image(query)['SearchResponse']['Image']['Results']:
+        print(x['Title'].strip())
+        print(x['MediaUrl'].strip())
+        print('Size: '+str(x['FileSize']))
+        print('Dimensions: '+str(x['Width'])+'x'+str(x['Height']))
+        print
+    except KeyError as strerror:
+      if(args.verbose): print strerror.message 
+  elif(args.search_news):
+    try:
+      for x in bing.search_news(query)['SearchResponse']['News']['Results']:
+        print(x['Title'].strip())
+        print(x['Url'].strip())
+        print
+    except KeyError as strerror:
+      if(args.verbose): print strerror.message 
+  elif(args.search_related):
+    try:
+      for x in bing.search_related(query)['SearchResponse']['RelatedSearch']['Results']:
+        print(x['Title'].strip())
+        print(x['Url'].strip())
+        print
+    except KeyError as strerror:
+      if(args.verbose): print strerror.message 
+  else:
+    try:
+      for x in bing.search(query)['SearchResponse']['Web']['Results']:
+        print(x['Title'].strip())
+        print(x['Description'].strip())
+        print(x['Url'].strip())
+        print
+    except KeyError as strerror:
+      if(args.verbose): print strerror.message 
+
+if __name__ == '__main__':
+  api_key = os.getenv('BING_API_KEY')
+  if api_key == None or api_key == "": 
+    print('You need to have your "BING_API_KEY" enviornment variable set to your Bing api key')
+  main()
